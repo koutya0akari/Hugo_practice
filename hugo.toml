@@ -1,5 +1,5 @@
 baseURL = 'https://akari0koutya.github.io/akari0koutya_Hugo'
-languageCode = 'ja-JP'
+locale = 'ja-JP'
 title = 'Hugoのテスト'
 theme = 'ananke'
 
