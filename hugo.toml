@@ -1,0 +1,10 @@
+baseURL = 'https://akari0koutya.github.io/akari0koutya_Hugo'
+languageCode = 'ja-JP'
+title = 'Hugoのテスト'
+theme = 'ananke'
+
+timeZone = 'Asia/Tokyo'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
