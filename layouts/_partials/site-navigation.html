@@ -1,16 +1,9 @@
 <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
-    <a href="{{ .Site.Home.RelPermalink }}" class="f4 fw2 hover-white white-90 dib no-underline">
-      {{ with .Site.Params.site_logo }}
-        <img src="{{ urls.RelURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
-      {{ else }}
-        {{ .Site.Title }}
-      {{ end }}
-    </a>
     <div class="flex-l items-center">
-      {{ partials.Include "i18nlist.html" . }}
-      {{ if .Site.Menus.main }}
-        <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
+      <div class="flex-l items-center ml-auto">
+        {{ if .Site.Menus.main }}
+          <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
           {{ range .Site.Menus.main }}
           <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pl3" "pr3" }}">
             <a class="hover-white white-90 no-underline" href="{{ .URL }}" title="{{ lang.Translate "pageTitle" . }}">
@@ -18,18 +11,29 @@
             </a>
           </li>
           {{ end }}
-        </ul>
-      {{ else }}
-        <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
-          {{ range .Site.Sections }}
-          <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pl3" "pr3" }}">
-            <a class="hover-white white-90 no-underline" href="{{ .RelPermalink }}">
-              {{ .Title }}
-            </a>
-          </li>
+          </ul>
+        {{ else }}
+          <ul class="{{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
+            {{ range .Site.Sections }}
+            <li class="list f5 f4-ns fw4 dib {{ compare.Conditional (compare.Eq $.Site.Language.Direction "rtl") "pl3" "pr3" }}">
+              <a class="hover-white white-90 no-underline" href="{{ .RelPermalink }}">
+                {{ .Title }}
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+        {{ end }}
+        <a href="{{ .Site.Home.RelPermalink }}" class="f4 fw2 hover-white white-90 dib no-underline ml3">
+          {{ with .Site.Params.site_logo }}
+            <img src="{{ urls.RelURL . }}" class="w100 mw5-ns" alt="{{ $.Site.Title }}" />
+          {{ else }}
+            {{ .Site.Title }}
           {{ end }}
-        </ul>
-      {{ end }}
+        </a>
+      </div>
+    </div>
+    <div class="flex-l items-center">
+      {{ partials.Include "i18nlist.html" . }}
       {{ partials.IncludeCached "social/follow.html" . }}
     </div>
   </div>
